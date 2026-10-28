@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pipkin Labs</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Pipkin Labs is a small UK app studio. Our first app, MochiBoost, is coming soon to iPhone and Android.">
+<meta name="theme-color" content="#1B1036">
+<meta property="og:title" content="Pipkin Labs">
+<meta property="og:description" content="Small things, made with heart. MochiBoost is coming soon.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap">
+<style>
+/* Layout: one dark Pipkin Labs column; the MochiBoost card is the single light "Milk" object, the studio signs off in the footer. */
+:root {
+  --plum: #1B1036;      /* Midnight Plum: page ground */
+  --plum-2: #251846;    /* raised plum for the footer band */
+  --ink: #FFFFFF;
+  --lavender: #C9B6FF;  /* subtitles on plum */
+  --blue: #2F6BFF;
+  --hot: #FF3D9A;
+  --lilac: #B388FF;
+  --gold: #FFD45C;
+  --milk: #FFF0F7;      /* MochiBoost card */
+  --deep-plum: #2A1747; /* MochiBoost text */
+  --boost-pink: #DB1F76;
+  --display: "Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--plum); }
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(47,107,255,.28), transparent 60%),
+    radial-gradient(50rem 28rem at -10% 20%, rgba(255,61,154,.22), transparent 60%),
+    var(--plum);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--lavender); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+.wrap {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+header.wrap { padding-block: 1.75rem 0; }
+.logo { display: block; width: clamp(11rem, 30vw, 15rem); height: auto; }
+
+.hero { padding-block: clamp(3rem, 9vw, 6.5rem) clamp(2.5rem, 6vw, 4rem); }
+.hero > * { max-width: 44rem; }
+.eyebrow {
+  font: 600 .8rem/1 var(--body); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--lavender); margin: 0 0 1.1rem;
+}
+h1 {
+  font: 600 clamp(2.6rem, 7.5vw, 4.75rem)/1.02 var(--display);
+  letter-spacing: -.01em; margin: 0; text-wrap: balance;
+}
+h1 .glow {
+  background: linear-gradient(110deg, var(--hot), var(--lilac) 55%, var(--blue));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lede { color: var(--lavender); font-size: 1.2rem; max-width: 34rem; margin: 1.4rem 0 0; }
+
+/* The one light object on the page */
+.app {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem 2.5rem;
+  background: var(--milk); color: var(--deep-plum);
+  border-radius: 2rem; padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow: 0 30px 80px -30px rgba(255,61,154,.45);
+  position: relative;
+}
+.app > div { min-width: 0; }
+.app .badge {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font: 700 .78rem/1 var(--body); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--deep-plum); background: #fff; border: 2px solid var(--deep-plum);
+  padding: .5rem .8rem; border-radius: 999px;
+}
+.app .badge::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: var(--boost-pink); animation: pulse 2s ease-in-out infinite; }
+.app-logo { display: block; width: min(22rem, 100%); height: auto; margin: 1.25rem 0 .75rem; }
+.app h2 { font: 600 clamp(1.5rem, 3.2vw, 2rem)/1.15 var(--display); margin: 0; text-wrap: balance; }
+.app p { margin: .8rem 0 0; max-width: 34rem; }
+.stores { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; padding: 0; list-style: none; }
+.stores li {
+  font: 600 .95rem/1 var(--body); padding: .75rem 1.1rem; border-radius: 999px;
+  border: 2px dashed rgba(42,23,71,.35); color: var(--deep-plum);
+}
+.mochi { width: clamp(9rem, 22vw, 14rem); height: auto; animation: bob 4s ease-in-out infinite; }
+
+.contact { padding-block: clamp(3rem, 7vw, 5rem); display: grid; gap: .6rem; }
+.contact h2 { font: 600 1.6rem/1.2 var(--display); margin: 0; }
+.contact p { margin: 0; color: var(--lavender); max-width: 36rem; }
+.email { font: 600 clamp(1.3rem, 3.5vw, 1.75rem)/1.3 var(--display); color: var(--ink); text-decoration-color: var(--hot); overflow-wrap: anywhere; }
+
+footer { background: var(--plum-2); border-top: 1px solid rgba(201,182,255,.15); }
+footer .wrap { padding-block: 2rem calc(2rem + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.25rem 3rem; font-size: .9rem; color: var(--lavender); }
+footer p { margin: 0; }
+footer address { font-style: normal; }
+footer nav { display: flex; gap: 1.25rem; align-items: flex-start; }
+
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .mochi, .app .badge::before { animation: none; } }
+@media (max-width: 640px) {
+  .app { grid-template-columns: 1fr; }
+  .mochi { display: none; }
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a href="/" aria-label="Pipkin Labs home"><img class="logo" src="assets/pipkin-labs-logo.png" alt="Pipkin Labs" width="720" height="176"></a>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <p class="eyebrow">A small app studio in the UK</p>
+    <h1>Small things, <span class="glow">made with heart.</span></h1>
+    <p class="lede">We make little apps, crafted with care, that leave people feeling a bit better. The first one is nearly ready.</p>
+  </section>
+
+  <section class="wrap" aria-labelledby="app-title">
+    <div class="app">
+      <div>
+        <span class="badge">Coming soon</span>
+        <img class="app-logo" src="assets/mochiboost-logo.png" alt="MochiBoost" width="640" height="147">
+        <h2 id="app-title">A little lift, whenever you need it.</h2>
+        <p>Daily Boosts for your self-esteem, from you and the people who love you. Mochi delivers kind words from your real friends and family, right when you need them.</p>
+        <ul class="stores" aria-label="Platforms">
+          <li>iPhone</li>
+          <li>Android</li>
+        </ul>
+      </div>
+      <img class="mochi" src="assets/mochi.png" alt="Mochi, a round pink character, winking" width="360" height="342">
+    </div>
+  </section>
+
+  <section class="wrap contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Say hello</h2>
+    <p>Questions, press, or you just want to know when MochiBoost lands? Drop us a line.</p>
+    <a class="email" href="mailto:hello@pipkinlabs.com">hello@pipkinlabs.com</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p>&copy; <span id="yr">2026</span> Pipkin Labs Ltd. Registered in England and Wales, company number <span data-company-number>17517786</span>.</p>
+      <address>Registered office: 71&ndash;75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</address>
+    </div>
+    <nav aria-label="Legal">
+      <a href="privacy.html">Privacy</a>
+      <a href="mailto:hello@pipkinlabs.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>

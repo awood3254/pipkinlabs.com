@@ -2,9 +2,9 @@
 
 Plain HTML, no build step. Files:
 
-- `index.html`: the coming-soon page (Pipkin Labs + MochiBoost card + contact + company details)
+- `index.html`: the coming-soon page (Pipkin Labs + mochiboost card + contact + company details)
 - `privacy.html`: short website privacy notice
-- `assets/`: logos, Mochi, favicon (resized from Branding/Claude - Brand_Assets.zip)
+- `assets/`: logos, Mochi, favicon (Pipkin Labs art from Branding/; mochiboost art from the app repo, assets/brand (brand v2))
 - `CNAME`: tells GitHub Pages which domain to serve
 
 ## Before you go live

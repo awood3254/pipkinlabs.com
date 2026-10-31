@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pipkin Labs</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Pipkin Labs is a small UK app studio. Our first app, MochiBoost, is coming soon to iPhone and Android.">
+<meta name="description" content="Pipkin Labs is a small UK app studio. Our first app, mochiboost, is coming soon to Android and iPhone.">
 <meta name="theme-color" content="#1B1036">
 <meta property="og:title" content="Pipkin Labs">
-<meta property="og:description" content="Small things, made with heart. MochiBoost is coming soon.">
+<meta property="og:description" content="Small things, made with heart. mochiboost is coming soon.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap">
 <style>
-/* Layout: one dark Pipkin Labs column; the MochiBoost card is the single light "Milk" object, the studio signs off in the footer. */
+/* Layout: one dark Pipkin Labs column; the mochiboost card is the one raised object, drawn in the app's own look (brand v2), and the studio signs off in the footer. */
 :root {
   --plum: #1B1036;      /* Midnight Plum: page ground */
   --plum-2: #251846;    /* raised plum for the footer band */
@@ -25,9 +25,15 @@
   --hot: #FF3D9A;
   --lilac: #B388FF;
   --gold: #FFD45C;
-  --milk: #FFF0F7;      /* MochiBoost card */
-  --deep-plum: #2A1747; /* MochiBoost text */
-  --boost-pink: #DB1F76;
+  /* mochiboost brand v2 (dark), from the app's tool/brand/brand.json */
+  --mb-surface: #261A47;
+  --mb-raised: #32235A;
+  --mb-border: #3D2C6B;
+  --mb-muted: #A99BD0;
+  --mb-primary: #FF5FAE;
+  --mb-accent: #FF7DBB;
+  --mb-glow-pink: #FF5FAE;
+  --mb-glow-lilac: #B48CFF;
   --display: "Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", system-ui, sans-serif;
   --body: "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
   color-scheme: dark;
@@ -74,30 +80,36 @@ h1 .glow {
 }
 .lede { color: var(--lavender); font-size: 1.2rem; max-width: 34rem; margin: 1.4rem 0 0; }
 
-/* The one light object on the page */
+/* The mochiboost card: the app's GlowCard, a 2px pink-to-lilac edge with a soft pink glow */
 .app {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem 2.5rem;
-  background: var(--milk); color: var(--deep-plum);
-  border-radius: 2rem; padding: clamp(1.75rem, 4vw, 3rem);
-  box-shadow: 0 30px 80px -30px rgba(255,61,154,.45);
-  position: relative;
+  border-radius: 2rem; padding: 2px;
+  background: linear-gradient(135deg, var(--mb-glow-pink), var(--mb-glow-lilac));
+  box-shadow: 0 0 48px -8px rgba(255,95,174,.35);
 }
-.app > div { min-width: 0; }
+.app-inner {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem 2.5rem;
+  background: var(--mb-surface); color: var(--ink);
+  border-radius: calc(2rem - 2px); padding: clamp(1.75rem, 4vw, 3rem);
+}
+.app-inner > div { min-width: 0; }
 .app .badge {
   display: inline-flex; align-items: center; gap: .45rem;
   font: 700 .78rem/1 var(--body); letter-spacing: .1em; text-transform: uppercase;
-  color: var(--deep-plum); background: #fff; border: 2px solid var(--deep-plum);
+  color: var(--mb-accent); background: var(--mb-raised); border: 1px solid var(--mb-border);
   padding: .5rem .8rem; border-radius: 999px;
 }
-.app .badge::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: var(--boost-pink); animation: pulse 2s ease-in-out infinite; }
-.app-logo { display: block; width: min(22rem, 100%); height: auto; margin: 1.25rem 0 .75rem; }
+.app .badge::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: var(--mb-primary); animation: pulse 2s ease-in-out infinite; }
+.app-logo { display: block; width: min(20rem, 100%); height: auto; margin: 1.4rem 0 1rem; }
 .app h2 { font: 600 clamp(1.5rem, 3.2vw, 2rem)/1.15 var(--display); margin: 0; text-wrap: balance; }
-.app p { margin: .8rem 0 0; max-width: 34rem; }
-.stores { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; padding: 0; list-style: none; }
+.app p { margin: .8rem 0 0; max-width: 34rem; color: var(--mb-muted); }
+.app-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; margin-top: 1.4rem; }
+.stores { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; padding: 0; list-style: none; }
 .stores li {
   font: 600 .95rem/1 var(--body); padding: .75rem 1.1rem; border-radius: 999px;
-  border: 2px dashed rgba(42,23,71,.35); color: var(--deep-plum);
+  background: var(--mb-raised); border: 1px solid var(--mb-border); color: var(--ink);
 }
+.app-link { font-weight: 700; color: var(--mb-accent); }
+.app-link:hover { color: var(--ink); }
 .mochi { width: clamp(9rem, 22vw, 14rem); height: auto; animation: bob 4s ease-in-out infinite; }
 
 .contact { padding-block: clamp(3rem, 7vw, 5rem); display: grid; gap: .6rem; }
@@ -115,8 +127,8 @@ footer nav { display: flex; gap: 1.25rem; align-items: flex-start; }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
 @media (prefers-reduced-motion: reduce) { .mochi, .app .badge::before { animation: none; } }
 @media (max-width: 640px) {
-  .app { grid-template-columns: 1fr; }
-  .mochi { display: none; }
+  .app-inner { grid-template-columns: 1fr; }
+  .mochi { grid-row: 1; width: 7.5rem; }
 }
 </style>
 </head>
@@ -134,23 +146,28 @@ footer nav { display: flex; gap: 1.25rem; align-items: flex-start; }
 
   <section class="wrap" aria-labelledby="app-title">
     <div class="app">
-      <div>
-        <span class="badge">Coming soon</span>
-        <img class="app-logo" src="assets/mochiboost-logo.png" alt="MochiBoost" width="640" height="147">
-        <h2 id="app-title">A little lift, whenever you need it.</h2>
-        <p>Daily Boosts for your self-esteem, from you and the people who love you. Mochi delivers kind words from your real friends and family, right when you need them.</p>
-        <ul class="stores" aria-label="Platforms">
-          <li>iPhone</li>
-          <li>Android</li>
-        </ul>
+      <div class="app-inner">
+        <div>
+          <span class="badge">Coming soon</span>
+          <img class="app-logo" src="assets/mochiboost-wordmark.png" alt="mochiboost" width="733" height="136">
+          <h2 id="app-title">Kind messages at the times you choose.</h2>
+          <p>Little kind messages, from you and the people who love you, right when you need them. Write your own Boosts, add some from friends and family, and Mochi delivers them with a sparkle.</p>
+          <div class="app-foot">
+            <ul class="stores" aria-label="Platforms">
+              <li>Android</li>
+              <li>iPhone</li>
+            </ul>
+            <a class="app-link" href="https://mochiboost.com">mochiboost.com</a>
+          </div>
+        </div>
+        <img class="mochi" src="assets/mochi.png" alt="Mochi, a round pink character carrying an envelope" width="400" height="400">
       </div>
-      <img class="mochi" src="assets/mochi.png" alt="Mochi, a round pink character, winking" width="360" height="342">
     </div>
   </section>
 
   <section class="wrap contact" aria-labelledby="contact-title">
     <h2 id="contact-title">Say hello</h2>
-    <p>Questions, press, or you just want to know when MochiBoost lands? Drop us a line.</p>
+    <p>Questions, press, or you just want to know when mochiboost lands? Drop us a line.</p>
     <a class="email" href="mailto:hello@pipkinlabs.com">hello@pipkinlabs.com</a>
   </section>
 </main>
